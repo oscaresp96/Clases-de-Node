@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "Laptop",
+    "price": 1200
+  },
+  {
+    "id": 2,
+    "name": "Mouse",
+    "price": 25
+  },
+  {
+    "name": "Monitor",
+    "price": 3500,
+    "id": 3
+  },
+  {
+    "name": "Monitor",
+    "price": 3500,
+    "id": 4
+  },
+  {
+    "name": "RGB Keboard",
+    "price": 1575,
+    "id": 5
+  },
+  {
+    "name": "RGB Keboard",
+    "price": 1575,
+    "id": 6
+  },
+  {
+    "name": "Mousepad",
+    "price": 250,
+    "id": 7
+  }
+]
