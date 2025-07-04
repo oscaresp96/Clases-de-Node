@@ -59,3 +59,12 @@ export function deleteUser(req,res) {
     users = users.filter(u => u.id !== id);
     res.status(204).json({ mensaje: 'Usuario eliminado', id });
 }
+
+export function filtrarUsers(userIds){
+    const usersFiltrados = [];
+
+    userIds.map(uId => {
+        usuariosFiltrados.push(usuarios.filter(u => u.id === uId) [0]);
+    });
+    return usuariosFiltrados;
+}

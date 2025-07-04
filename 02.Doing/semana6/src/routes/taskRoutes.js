@@ -1,5 +1,5 @@
 import express from 'express';
-import { actualizarTarea, crearTarea, deleteTarea, obtenerTareaById, obtenerTareas } from '../controllers/taskController.js';
+import { actualizarTarea, crearTarea, deleteTarea, obtenerTareaById, obtenerTareas, obtenerTareasByUser } from '../controllers/taskController.js';
 
 const router = express.Router();
 
@@ -7,6 +7,7 @@ const router = express.Router();
 
 //Obtener todas las tareas
 router.get('/task', obtenerTareas);
+router.get('/task/user/:userId', obtenerTareasByUser);
 router.get('/task/:id', obtenerTareaById)
 router.post('/task', crearTarea);
 router.put('/task/:id', actualizarTarea);

@@ -1,3 +1,5 @@
+import { filtrarUsers } from './userController.js';
+
 let tareas = [];
 let contadorId = 1;
 
@@ -17,6 +19,18 @@ export function obtenerTareas(req,res) {
     res.json(resultado);
  }
 
+ export function obtenerTareasByUser(req,res) {
+    const userId = parseInt(req.params.userId);
+    let resultado = [...tareas];
+
+    if(!userId) {
+        return res.status(400),json({ error: 'Tareas no encontradas'})
+    }
+
+    userId 
+
+    res.json(resultado);
+ }
 export function obtenerTareaById(req,res) {
     const id = parseInt(req.params.id);
     const tarea = tareas.find(t => t.id === id);
@@ -30,7 +44,7 @@ export function obtenerTareaById(req,res) {
 }
 
 export function crearTarea(req,res) {
-    const { titulo, descripcion, completada } = req.body;
+    const { titulo, descripcion, completada, userId } = req.body;
 
     if (!titulo || !titulo.trim === '') {
         return res.status(400).json({ error: 'El titulo es obligatorio' });
@@ -38,14 +52,20 @@ export function crearTarea(req,res) {
 
     let existe = tareas.find(t => t.titulo === titulo.trim());
     if (existe){
-        return res.status(400).json({ error: 'El titulo ya existe' });
     }
+
+    if(!Array.isArray(userId)){
+        return res.status(400).json({ error: 'Usuario(s) no validos. Debe de s'})
+    }
+
+    const users = filtrarUsers(userId);
 
     const nuevaTarea = {
         id: contadorId++,
         titulo: titulo.trim(),
         descripcion,
-        completada
+        completada,
+        users,
     }
 
     tareas.push(nuevaTarea);
