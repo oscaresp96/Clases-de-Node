@@ -14,7 +14,7 @@ async function obtenerEstado(req,res){
 
 async function obtenerEstados(req,res) {
     try{
-        const estados = await Estado.find().sort({ nombre});
+        const estados = await Estado.find().sort({ nombre: 1 });
         res.json(estados);
     } catch (error){
         res.status(500).json({ error: 'Internal Server Error'});

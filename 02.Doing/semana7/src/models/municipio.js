@@ -6,7 +6,6 @@ const MunicipioSchema = new mongoose.Schema({
         type:String,
         maxLength:250,
         required:true,
-        unique:true
     },
     
     estadoId:{

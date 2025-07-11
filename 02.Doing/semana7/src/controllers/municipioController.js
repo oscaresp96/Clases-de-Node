@@ -14,7 +14,7 @@ async function obtenerMunicipio(req,res){
 
 async function obtenerMunicipios(req,res) {
     try{
-        const municipios = await Municipio.find().sort({ nombre});
+        const municipios = await Municipio.find().sort({ nombre: 1 });
         res.json(municipios);
     } catch (error){
         res.status(500).json({ error: 'Internal Server Error'});

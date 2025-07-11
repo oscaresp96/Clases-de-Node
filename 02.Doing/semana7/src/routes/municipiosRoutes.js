@@ -4,7 +4,6 @@ const router = express.Router();
 const { actualizarMunicipio,
   crearMunicipio,
   eliminarMunicipio,
-  obtenerMunicipio,
   obtenerMunicipio, 
   obtenerMunicipios} = require('../controllers/municipioController.js');
 
