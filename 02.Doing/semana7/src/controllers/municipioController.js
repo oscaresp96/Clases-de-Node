@@ -23,8 +23,8 @@ async function obtenerMunicipios(req,res) {
 
 async function crearMunicipio (req,res) {
     try{
-        const { nombre, municipioId } = req.body;
-        if(!nombre || !municipioId){
+        const { nombre, estadoId } = req.body;
+        if(!nombre || !estadoId){
             return res.status(400).json({ error: 'Faltan Campos Requeridos'});
         }
         const newMunicipio = await Municipio.create({ nombre, municipioId });
@@ -36,8 +36,8 @@ async function crearMunicipio (req,res) {
 
 async function actualizarMunicipio(req, res) {
 try {
-    const { nombre, municipioId } = req.body;
-    if (!nombre || !municipioId) {
+    const { nombre, estadoId } = req.body;
+    if (!nombre || !estadoId) {
     return res.status(400).json({ error: 'Faltan campos requeridos' });
     }
     const updatedMunicipio = await Municipio.findByIdAndUpdate(req.params.id, req.body);

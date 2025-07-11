@@ -23,8 +23,8 @@ async function obtenerEstados(req,res) {
 
 async function crearEstado (req,res) {
     try{
-        const { nombre, estadoId } = req.body;
-        if(!nombre || !estadoId){
+        const { nombre, municipioId } = req.body;
+        if(!nombre || !municipioId){
             return res.status(400).json({ error: 'Faltan Campos Requeridos'});
         }
         const newEstado = await Estado.create({ nombre, estadoId });
@@ -36,8 +36,8 @@ async function crearEstado (req,res) {
 
 async function actualizarEstado(req, res) {
 try {
-    const { nombre, estadoId } = req.body;
-    if (!nombre || !estadoIdId) {
+    const { nombre, municipioId } = req.body;
+    if (!nombre || !municipioId) {
     return res.status(400).json({ error: 'Faltan campos requeridos' });
     }
     const updatedEstado = await Estado.findByIdAndUpdate(req.params.id, req.body);
