@@ -1,4 +1,4 @@
-import ShippingAddress from './models/shippingAddress.js'
+import ShippingAddress from '../models/shippingAddress.js'
 
 async function getShippingAddresses(req, res){
     try {

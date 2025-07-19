@@ -1,5 +1,4 @@
-import WishList from '../models/wishList.js';
-import WishList from './models/wishList.js'
+import WishList from '../models/wishList.js'
 
 async function getWishLists(req, res){
     try {

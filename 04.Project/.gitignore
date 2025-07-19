@@ -1,8 +1,8 @@
 # Ignore all .env files
-.env*.*
+
 
 # Dependency directories
-.env
+
 /node_modules
 node_modules/
 package-lock.json
