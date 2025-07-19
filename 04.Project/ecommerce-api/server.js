@@ -7,7 +7,7 @@ import logger from './src/middlewares/logger.js';
 dotenv.config();
 
 const app = express();
-dbConnection;
+dbConnection();
 app.use(express.json());
 app.use(logger);
 

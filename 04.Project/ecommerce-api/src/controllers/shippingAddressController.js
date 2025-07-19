@@ -2,8 +2,8 @@ import ShippingAddress from '../models/shippingAddress.js'
 
 async function getShippingAddresses(req, res){
     try {
-        const ShippingAddresses = await ShippingAddress.find().sort({user:1}).populate('user');
-        res.json(ShippingAddresses);
+        const shippingAddresses = await ShippingAddress.find().sort({user:1}).populate('user');
+        res.json(shippingAddresses);
     } catch (error){
         res.status(500).send({error})
     }
@@ -12,8 +12,8 @@ async function getShippingAddresses(req, res){
 async function getShippingAddressById(req, res){
     try {
         const id = req.params.id
-        const ShippingAddress = await ShippingAddress.findById(id).populate('user');
-        if(!ShippingAddress){
+        const shippingAddress = await ShippingAddress.findById(id).populate('user');
+        if(!shippingAddress){
             return res.status(404).json({message: "Shipping Address not found"})
         }
         res.json(ShippingAddress);

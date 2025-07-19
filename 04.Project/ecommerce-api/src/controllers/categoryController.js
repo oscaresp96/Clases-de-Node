@@ -16,7 +16,7 @@ async function getCategoryById(req, res){
         }
         res.status(200).json(category);
     } catch (error){
-        res.status(500).send({error})
+        res.status(500).json(error)
     }
 }
 async function createCategory(req, res){

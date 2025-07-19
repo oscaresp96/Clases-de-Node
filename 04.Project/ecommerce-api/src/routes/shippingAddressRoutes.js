@@ -13,7 +13,7 @@ const router = express.Router();
 router.get('/shippingAddresses', getShippingAddresses);
 router.get('/shippingAddresses/:id', getShippingAddressById);
 router.post('/shippingAddresses', createShippingAddress);
-router.put('/shippingAaddresses/:id', updateShippingAddress);
+router.put('/shippingAddresses/:id', updateShippingAddress);
 router.delete('/shippingAddresses/:id', deleteShippingAddress);
 
 export default router;

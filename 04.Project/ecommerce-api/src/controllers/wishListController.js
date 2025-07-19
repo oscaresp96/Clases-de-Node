@@ -2,9 +2,10 @@ import WishList from '../models/wishList.js'
 
 async function getWishLists(req, res){
     try {
-        const WishLists = await WishLists.find().sort({product:1}).populate('user');
-        res.json(WishLists);
+        const wishLists = await WishList.find().sort({product:1}).populate('user');
+        res.json(wishLists);
     } catch (error){
+        console.log(error)
         res.status(500).send({error})
     }
 }
@@ -12,8 +13,8 @@ async function getWishLists(req, res){
 async function getWishListById(req, res){
     try {
         const id = req.params.id
-        const WishList = await WishList.findById(id).populate('user');
-        if(!WishList){
+        const wishList = await WishList.findById(id).populate('user');
+        if(!wishList){
             return res.status(404).json({message: "Wishlist not found"})
         }
         res.json(WishList);
