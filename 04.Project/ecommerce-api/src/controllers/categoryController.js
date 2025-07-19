@@ -1,4 +1,4 @@
-import Category from '../models/category.js'
+import Category from './models/category.js'
 
 async function getCategories(req, res){
     try {
@@ -8,7 +8,7 @@ async function getCategories(req, res){
         res.status(500).send({error})
     }
 }
-async function getCategoryByID(req, res){
+async function getCategoryById(req, res){
     try {
         const category= await Category.findById(req.params.id).populate('parentCategory');
         if(!category){
@@ -63,7 +63,7 @@ async function deleteCategory(req, res){
 
 export {
     getCategories,
-    getCategoryByID,
+    getCategoryById,
     createCategory,
     updateCategory,
     deleteCategory

@@ -1,4 +1,4 @@
-import Product from '../models/product.js'
+import Product from './models/product.js'
 
 async function getProducts(req, res){
     try {
@@ -8,7 +8,8 @@ async function getProducts(req, res){
         res.status(500).send({error})
     }
 }
-async function getProductByID(req, res){
+
+async function getProductById(req, res){
     try {
         const id = req.params.id
         const product = await Product.findById(id).populate('category');
@@ -20,11 +21,12 @@ async function getProductByID(req, res){
         res.status(500).send({error})
     }
 }
+
 async function getProductByCategory(req,res) {
     try{
         const id = req.params.idCategory;
         const products = await Product.find({category:id}).populate('category').sort({name:1});
-        if(products.lenght===0){
+        if(products.length===0){
             return res.status(404).json({message:'No products found on this category'});
         }
         res.json(products);
@@ -53,7 +55,7 @@ async function updateProduct(req, res){
         if(!name || !description || !price || !stock || !imageURL || !category){
             return res.status(400).json({error: "All fields are required"});
         }
-        const updatedProduct = await Product.findByIdAndUpdate(id, {name, description, price, stock, imageURL, category}, {new:true})
+        const updatedProduct = await Product.findByIdAndUpdate(id, {name, description, price, stock, imageURL, category}, {new:true});
         if(!updatedProduct){
             return res.status(404).json({message: 'Product not found'});
         }
@@ -77,7 +79,7 @@ async function deleteProduct(req, res){
 
 export {
     getProducts,
-    getProductByID,
+    getProductById,
     createProduct,
     updateProduct,
     deleteProduct,
