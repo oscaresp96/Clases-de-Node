@@ -1,16 +1,11 @@
 import express from "express";
-import { contarPropObjeto } from "./controllers/contarController.js";
+import routes from "./routes/index.js";
 
 const port = process.env.PORT || 3000;
 const app = express();
 
 app.use(express.json());
-
-app.post("/contarPropObjeto", contarPropObjeto);
-
-app.get("/", (req, res) => {
-    res.send("Servidor funcionando");
-});
+app.use("/api", routes);
 
 app.listen(port, () => {
   console.log(`Servidor corriendo en el puerto http://localhost:${port}`);

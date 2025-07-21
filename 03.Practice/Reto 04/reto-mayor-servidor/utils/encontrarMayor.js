@@ -1,12 +1,14 @@
-export function findMax(req,res){
-const Arr = [123, 890, 987, 789, 321, 456, 654];
- let [maxVal] = Math.max(...Arr);
- console.log("max element is:" + maxVal);
+function encontrarNumMayor(numeros) { 
+    if (!Array.isArray(numeros) || numeros.length === 0) {
+        throw new Error("El array de números no puede ser un arreglo vacío");
+    }
+
+    if (!numeros.every(n => typeof n === 'number' && !isNaN(n))) {
+    throw new Error('Todos deben ser números válidos.');
+    
+    }
+    return Math.max(...numeros);
 }
 
-export function findMin(req,res){
-    const Arr = [123, 890, 987, 789, 321, 456, 654];
-    let[minVal] = Math.min(...Arr);
-    console.log("min element is:"+ minVal);
-}
+export default encontrarNumMayor;
 
