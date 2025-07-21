@@ -34,13 +34,21 @@ app.get("/filtrarParesImpares", (req, res) => {
     
     const numerosArray = convertirANumeros(elementosArray);
 
-    const { numPares, numImpares } = separarNumParesImpares(numerosArray);
+    const { pares, impares } = separarNumParesImpares(numerosArray);
 
-    res.json({ original: numerosArray, numPares, numImpares });
+    res.json({
+      original: numerosArray,
+      pares,
+      impares
+    });
+
   }
-
   catch (error) {
-    res.status(500).json({ mensaje: ({error: "Error interno del servidor"})
+    res.status(500).json({
+      error: "Error interno del servidor",
+      mensaje: error.message
+    });
+  }
 });
 
 app.get("/", (req, res) => {
