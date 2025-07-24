@@ -1,11 +1,11 @@
-import {Sequelize} from 'sequelize';
-import dotenv from 'dotenv';
-import mysql from 'mysql2/promise';
+import { Sequelize } from "sequelize";
+import dotenv from "dotenv";
+import mysql from "mysql2/promise";
 
 dotenv.config();
 
-async function ensureDataBaseExist(){
- const connection = await mysql.createConnection({
+async function ensureDatabaseExists() {
+  const connection = await mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASS || undefined,
@@ -14,10 +14,10 @@ async function ensureDataBaseExist(){
   await connection.end();
 }
 
-await ensureDataBaseExist();
+await ensureDatabaseExists();
 
 const sequelize = new Sequelize(
-    process.env.DB_NAME,
+  process.env.DB_NAME,
   process.env.DB_USER,
   process.env.DB_PASS || null, // Usa null si no hay contraseña
   {
@@ -33,16 +33,16 @@ const sequelize = new Sequelize(
   }
 );
 
-async function testConnection(){
-    try{
-        await sequelize.authenticate();
-        await sequelize.sync();
-        console.log('Connection test');
-    } catch (error){
-        console.error('Cannot be connected tyo MySQL');
-    }
+async function testConnection() {
+  try {
+    await sequelize.authenticate();
+    await sequelize.sync();
+    console.log('Connection test');
+  } catch (error) {
+    console.error('Cannot be connected to Mysql');
+  }
 }
 
 testConnection();
 
-export {sequelize};
+export { sequelize };

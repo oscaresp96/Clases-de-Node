@@ -1,26 +1,26 @@
 import { Estado } from "../models/estado.js";
 
-async function obtenerEstados(req,res){
-    try{
-        const estados = await Estado.findAll({
-            order:[['nombre','ASC']]
-        });
-        res.json(estados);
-    } catch (error) {
-        res.status(500).json({ error: 'Error getting states'});
-    }
+async function obtenerEstados(req, res) {
+  try {
+    const estados = await Estado.findAll({
+      order: [['nombre', 'ASC']]
+    });
+    res.json(estados);
+  } catch (error) {
+    res.status(500).json({ error: 'Error getting states' });
+  }
 }
 
-async function obtenerEstado(req,res){
-    try{
-        const estado = await Estado.findByPk(req.params.id);
-        if(!estado){
-            return res.status(404).json({error: 'State not found'});
-        }
-        res.json(estado);
-    } catch (error) {
-        res.status(500).json({error:'Error getting states'});
+async function obtenerEstado(req, res) {
+  try {
+    const estado = await Estado.findByPk(req.params.id);
+    if (!estado) {
+      return res.status(404).json({ error: 'State not found' });
     }
+    res.json(estado);
+  } catch (error) {
+    res.status(500).json({ error: 'Error getting state' });
+  }
 }
 
 async function crearEstado(req, res) {
