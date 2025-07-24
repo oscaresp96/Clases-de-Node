@@ -1,6 +1,6 @@
 USE semana08_db;
 
-// SET @estadoId = (SELECT id FROM estados WHERE nomnre='Aguascalientes');
+-- SET @estadoId = (SELECT id FROM estados WHERE nombre='Aguascalientes');
 
 INSERT INTO municipios (nombre,estado_id) 
 VALUES
@@ -16,6 +16,18 @@ VALUES
 ('San José de Gracia' , (@estadoID)),
 ('Tepezalá' , (@estadoID));
 
-// populate SELECT * FROM estados e INNER JOIN municipios m ON e.id=m.estado_id;
+-- populate 
+SELECT * FROM estados e INNER JOIN municipios m ON e.id=m.estado_id;
 
-// consulta SELECT e.id as IdEstado, e.nombre as Estado, m.id as IdMunicipio, m.nombre as Municipio, FROM estados e INNER JOIN municipios m ON e.id=m.estado_id WHERE m.nombre LIKE 'San%';
+-- consulta 
+SELECT e.id as IdEstado, e.nombre as Estado, m.id as IdMunicipio, m.nombre as Municipio, FROM estados e INNER JOIN municipios m ON e.id=m.estado_id WHERE m.nombre LIKE 'San%';
+
+-- Consulta completa con join
+SELECT
+    e.nombre as estado,
+    m.nombre as municipio,
+    u.nombre as usuario
+FROM estados e
+JOIN municipios m ON e.id = m.estado_id
+LEFT JOIN usuarios u ON m.id = u.municipio_id
+ORDER BY e.nombre, m.nombre;
