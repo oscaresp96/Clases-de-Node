@@ -1,11 +1,17 @@
 import {Sequelize} from 'sequelize';
 import dotenv from 'dotenv';
-import mysql from 'mysql2';
+import mysql from 'mysql2/promise';
 
 dotenv.config();
 
 async function ensureDataBaseExist(){
-
+ const connection = await mysql.createConnection({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS || undefined,
+  });
+  await connection.query(`CREATE DATABASE IF NOT EXISTS \`${process.env.DB_NAME}\`;`);
+  await connection.end();
 }
 
 await ensureDataBaseExist();
