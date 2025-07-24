@@ -17,20 +17,20 @@ async function ensureDataBaseExist(){
 await ensureDataBaseExist();
 
 const sequelize = new Sequelize(
-    'semana08_ORM', 
-    'root',
-    'password',  // null
-    {
-        host:'127.0.0.1',
-        dialect:'mysql',
-        logging: false,
-        pool: {
-            max:5,
-            min:0,
-            acquire:30000,
-            idle:100000,
-        }
+    process.env.DB_NAME,
+  process.env.DB_USER,
+  process.env.DB_PASS || null, // Usa null si no hay contraseña
+  {
+    host: process.env.DB_HOST,
+    dialect: process.env.DB_DIALECT,
+    logging: false,
+    pool: {
+      max: 5,
+      min: 0,
+      acquire: 30000,
+      idle: 100000,
     }
+  }
 );
 
 async function testConnection(){
