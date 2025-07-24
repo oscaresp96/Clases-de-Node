@@ -1,4 +1,4 @@
-import { Estado } from "../models/estado";
+import { Estado } from "../models/estado.js";
 
 async function obtenerEstados(req,res){
     try{

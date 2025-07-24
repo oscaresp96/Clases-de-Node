@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import { sequelize } from "../config/database";
+import { sequelize } from "../config/database.js";
 
 const Estado = sequelize.define('Estado',{
     id:{
@@ -14,6 +14,6 @@ const Estado = sequelize.define('Estado',{
     },{
         tableName: 'estados',
         timestamps: 'flase',
-    });
+});
 
-    export {Estado};
+export {Estado};
